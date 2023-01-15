@@ -1,0 +1,26 @@
+{
+  "name": "library",
+  "version": "1.0.0",
+  "description": "A web app that organizes your reading list by keeping track of the books you have read or yet to read.",
+  "main": "script.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AdnanNisat/library.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AdnanNisat/library/issues"
+  },
+  "homepage": "https://github.com/AdnanNisat/library#readme",
+  "devDependencies": {
+    "eslint": "^8.31.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-config-prettier": "^8.6.0",
+    "eslint-plugin-import": "^2.27.4"
+  }
+}
