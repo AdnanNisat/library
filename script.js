@@ -1,4 +1,6 @@
 const myLibrary = [];
+// eslint-disable-next-line prefer-const
+let removeButtonObject = document.querySelectorAll('.removeButton');
 
 function Book(title, author, pageNo, read) {
     this.title = title;
@@ -30,6 +32,7 @@ function display(e) {
     cardDiv.appendChild(readButton);
     const removeButton = document.createElement('button');
     removeButton.appendChild(document.createTextNode('Remove'));
+    removeButton.setAttribute('class','removeButton');
     cardDiv.appendChild(removeButton);
 }
 
@@ -39,9 +42,41 @@ function displayBook() {
     });
 }
 
+function initiateRemoveButton() {
+    removeButtonObject = document.querySelectorAll('.removeButton');
+    removeButtonObject.forEach( (occurence) => {
+        occurence.addEventListener('click', () => {
+            occurence.parentNode.remove();
+        });
+    });
+}
+
+
 const gameOfThrones = new Book("The Game of Thrones", 'G.R.R.M', 762, true);
 const angelsAndDemons = new Book("Angels and Demons", 'Dan Brown', 234, false);
 
 addBookToLibrary(gameOfThrones);
 addBookToLibrary(angelsAndDemons);
 displayBook();
+
+const addBookButton = document.getElementById('add_book');
+const popUpSubmit = document.getElementById('popup_submit');
+const popUp = document.getElementById('popup');
+
+popUpSubmit.addEventListener('click', () => {
+
+    const title = document.getElementById('title').value;
+    const author = document.getElementById('author').value;
+    const pageNo = document.getElementById('pages').value;
+    const readBox = document.getElementById('checkbox').checked;
+
+    popUp.classList.add('not_visible');
+    const book = new Book(title, author, pageNo, readBox);
+    display(book);
+    initiateRemoveButton();
+})
+
+addBookButton.addEventListener('click', () => {
+    popUp.classList.remove('not_visible');
+})
+

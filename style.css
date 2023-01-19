@@ -61,3 +61,46 @@ body {
     justify-content: space-evenly;
     gap: 1rem;
 }
+
+.popup {
+    background-color: blanchedalmond;
+    padding: 1rem;
+    border-radius: 16px;
+
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    max-width: 300px;
+    max-height: 300px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.popup input {
+    min-height: 2rem;
+    border-radius: 6px;
+    border: none;
+    font-family: 'Roboto';
+    padding-left: 1rem;
+}
+
+.readCheckbox {
+    display: flex;
+    align-items: center;
+    font-size: small;
+    gap: 15px;
+    justify-content: space-between;
+
+    font-size: 1rem;
+}
+
+.not_visible {
+    visibility: hidden;
+}
