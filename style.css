@@ -104,3 +104,35 @@ body {
 .not_visible {
     visibility: hidden;
 }
+
+button {
+    padding: .5rem 2rem;
+
+}
+
+.read {
+    padding: .5rem 2rem;
+    background-color: rgb(5, 187, 5);
+    border-radius: 8px;
+    border: none;
+    font-size: large;
+    font-weight: 900;
+}
+
+.notread {
+    padding: .5rem 2rem;
+    background-color: rgb(247, 78, 100);
+    border-radius: 8px;
+    border: none;
+    font-size: large;
+    font-weight: 900;
+}
+
+.removeButton {
+    padding: .5rem 2rem;
+    background-color: rgb(223, 141, 64);
+    border-radius: 8px;
+    border: none;
+    font-size: large;
+    font-weight: 900;
+}

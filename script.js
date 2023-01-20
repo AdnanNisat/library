@@ -1,16 +1,16 @@
-const myLibrary = [];
 // eslint-disable-next-line prefer-const
 let removeButtonObject = document.querySelectorAll('.removeButton');
+// eslint-disable-next-line prefer-const
+let readButton = document.querySelectorAll("#readButton");
+
+
+
 
 function Book(title, author, pageNo, read) {
     this.title = title;
     this.author = author;
     this.pageNo = pageNo;
     this.read = read;
-}
-
-function addBookToLibrary(book) {
-    myLibrary.push(book);
 }
 
 function display(e) {
@@ -28,18 +28,21 @@ function display(e) {
     pageNo.appendChild(document.createTextNode(e.pageNo));
     cardDiv.appendChild(pageNo);
     const readButton = document.createElement('button');
-    readButton.appendChild(document.createTextNode('Read'));
+    readButton.setAttribute('id', 'readButton');
+
+    if(e.read){
+        readButton.classList.add('read');
+        readButton.appendChild(document.createTextNode('Read'));
+    }else {
+        readButton.classList.add('notread');
+        readButton.appendChild(document.createTextNode('Unread'));
+    }
+
     cardDiv.appendChild(readButton);
     const removeButton = document.createElement('button');
     removeButton.appendChild(document.createTextNode('Remove'));
     removeButton.setAttribute('class','removeButton');
     cardDiv.appendChild(removeButton);
-}
-
-function displayBook() {
-    myLibrary.forEach(element => {
-        display(element);
-    });
 }
 
 function initiateRemoveButton() {
@@ -51,13 +54,22 @@ function initiateRemoveButton() {
     });
 }
 
-
-const gameOfThrones = new Book("The Game of Thrones", 'G.R.R.M', 762, true);
-const angelsAndDemons = new Book("Angels and Demons", 'Dan Brown', 234, false);
-
-addBookToLibrary(gameOfThrones);
-addBookToLibrary(angelsAndDemons);
-displayBook();
+function initiateReadButton() {
+readButton = document.querySelectorAll("#readButton");
+readButton.forEach( object => {
+    object.addEventListener('click', () => {
+        if(object.textContent === 'Read'){
+            object.textContent = 'Unread';
+            object.className = '';
+            object.classList.add('notread');
+        }else{
+            object.textContent = 'Read';
+            object.className = '';
+            object.classList.add('read');
+        }
+    });
+});
+}
 
 const addBookButton = document.getElementById('add_book');
 const popUpSubmit = document.getElementById('popup_submit');
@@ -74,9 +86,11 @@ popUpSubmit.addEventListener('click', () => {
     const book = new Book(title, author, pageNo, readBox);
     display(book);
     initiateRemoveButton();
+    initiateReadButton();
 })
 
 addBookButton.addEventListener('click', () => {
     popUp.classList.remove('not_visible');
 })
+
 
