@@ -1,10 +1,5 @@
 // eslint-disable-next-line prefer-const
 let removeButtonObject = document.querySelectorAll('.removeButton');
-// eslint-disable-next-line prefer-const
-let readButton = document.querySelectorAll("#readButton");
-
-
-
 
 function Book(title, author, pageNo, read) {
     this.title = title;
@@ -30,7 +25,7 @@ function display(e) {
     const readButton = document.createElement('button');
     readButton.setAttribute('id', 'readButton');
 
-    if(e.read){
+   if(e.read){
         readButton.classList.add('read');
         readButton.appendChild(document.createTextNode('Read'));
     }else {
@@ -54,21 +49,27 @@ function initiateRemoveButton() {
     });
 }
 
-function initiateReadButton() {
-readButton = document.querySelectorAll("#readButton");
-readButton.forEach( object => {
-    object.addEventListener('click', () => {
-        if(object.textContent === 'Read'){
-            object.textContent = 'Unread';
-            object.className = '';
-            object.classList.add('notread');
-        }else{
-            object.textContent = 'Read';
-            object.className = '';
-            object.classList.add('read');
+function initiateReadButton(){
+    // eslint-disable-next-line prefer-const
+    let object = document.querySelectorAll('#readButton');
+    object.forEach( (e) => {
+        if(!(e.getAttribute('listener') === 'true')){
+            e.addEventListener('click', () =>{
+            
+                if(e.textContent === 'Read'){
+                    e.textContent = 'Unread';
+                    e.className = '';
+                    e.classList.add('notread');
+                }else{
+                    e.textContent = 'Read';
+                    e.className = '';
+                    e.classList.add('read');
+                }
+            });
+            e.setAttribute('listener', 'true');
         }
-    });
-});
+        }
+);
 }
 
 const addBookButton = document.getElementById('add_book');
